@@ -57,8 +57,9 @@ public class SpookyMansion implements GameWorld {
 		
 		Place secretRoom = insert(Place.create("secretRoom", "You have found the secret room."));
 		secretRoom.addExit(new Exit("hallway0", "There is a long hallway."));
+		secretRoom.addExit(new Exit("basement", "There are stairs leading down."));
 		
-		int hallwayDepth = 3;
+		int hallwayDepth = 5;
 		int lastHallwayPart = hallwayDepth - 1;
 		for (int i=0; i<hallwayDepth; i++) {
 			Place hallwayPart = insert(Place.create("hallway"+i, "This is a very long hallway."));
@@ -67,8 +68,12 @@ public class SpookyMansion implements GameWorld {
 			} else {
 				hallwayPart.addExit(new Exit("hallway"+(i-1), "Go back."));
 			}
+			
 			if (i != lastHallwayPart) {
 				hallwayPart.addExit(new Exit("hallway"+(i+1), "Go forward."));
+				}
+			if (i!= lastHallwayPart || i == 2) {
+					hallwayPart.addExit(new Exit("hallway"+(i+1), "Go forward, your almost at the end of the hall."));
 			} else {
 				hallwayPart.addExit(new Exit("crypt", "There is darkness ahead."));
 			}
