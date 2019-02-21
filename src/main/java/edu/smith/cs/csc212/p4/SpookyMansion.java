@@ -89,7 +89,6 @@ public class SpookyMansion implements GameWorld {
 				+"It is scary here, but there is an exit to outside.\n"+
 				"Maybe you'll be safe out there."));
 		
-		// Make sure your graph makes sense!
 		checkAllExitsGoSomewhere();
 	}
 
@@ -110,21 +109,15 @@ public class SpookyMansion implements GameWorld {
 	 */
 	private void checkAllExitsGoSomewhere() {
 		boolean missing = false;
-		// For every place:
 		for (Place p : places.values()) {
-			// For every exit from that place:
 			for (Exit x : p.getVisibleExits()) {
-				// That exit goes to somewhere that exists!
 				if (!places.containsKey(x.getTarget())) {
-					// Don't leave immediately, but check everything all at once.
 					missing = true;
-					// Print every exit with a missing place:
 					System.err.println("Found exit pointing at " + x.getTarget() + " which does not exist as a place.");
 				}
 			}
 		}
 		
-		// Now that we've checked every exit for every place, crash if we printed any errors.
 		if (missing) {
 			throw new RuntimeException("You have some exits to nowhere!");
 		}
