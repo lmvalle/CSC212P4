@@ -52,7 +52,7 @@ public class SpookyMansion implements GameWorld {
 		attic2.addExit(new Exit("attic3", "There is another room up here."));
 		
 		Place attic3 = insert(Place.create("attic3", "This room has to many paintings of animal ani."));
-		attic3.addExit(new Exit("attic", "There is more back through the archway."));
+		attic3.addExit(new Exit("attic", "You run through the next door you see in the room"));
 		
 		Place kitchen = insert(Place.create("kitchen", "You've found the kitchen. You smell old food and some kind of animal."));
 		kitchen.addExit(new Exit("entranceHall", "There is a red door."));
